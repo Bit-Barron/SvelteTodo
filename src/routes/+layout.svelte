@@ -1,16 +1,19 @@
 <script>
+	// @ts-nocheck
+
 	import '../app.postcss';
-	let newTodo = 'Eat';
+	let newTodo = '';
 
 	/**
 	 * @type {any[]}
 	 */
-	let arr = [];
+	let todos = [];
 
-	const handleTodo = () => {
-		const todo = arr.push(newTodo);
-		console.log(todo)
+	const addTodo = () => {
+		todos.push(newTodo);
+		newTodo = '';
 	};
+	console.log(newTodo);
 </script>
 
 <div class="flex justify-center text-2xl font-bold mt-4">SvelteTodo</div>
@@ -21,13 +24,11 @@
 		id="username"
 		type="text"
 		placeholder="Todo..."
-		on:change={() => {
-			newTodo = 'Eat';
-		}}
+		bind:value={newTodo}
 	/>
 	<div class="flex space-x-2 justify-center ml-4">
 		<button
-			on:click={() => handleTodo()}
+			on:click={addTodo}
 			type="button"
 			class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
 			>Add Todo</button
@@ -38,4 +39,8 @@
 	<div class="text-2xl mt-20 flex justify-center font-bold">Todos for Today</div>
 </div>
 
-<slot />
+<ul>
+	{#each todos as todo}
+		<li class="text-2xl text-white">{todo}</li>
+	{/each}
+</ul>
