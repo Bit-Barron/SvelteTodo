@@ -7,11 +7,10 @@
 	/**
 	 * @type {any[]}
 	 */
-	let todos = [];
+	let todos = [{text: newTodo}];
 
 	const addTodo = () => {
-		todos.push(newTodo);
-		newTodo = '';
+		todos = [...todos ,{newItem: newTodo}]
 	};
 	console.log(newTodo);
 </script>
@@ -40,7 +39,7 @@
 </div>
 
 <ul>
-	{#each todos as todo}
-		<div>{todo}</div>
+	{#each todos as todo, index}
+		<div class="text-center mt-10 text-lg">{todo.index}</div>
 	{/each}
 </ul>
