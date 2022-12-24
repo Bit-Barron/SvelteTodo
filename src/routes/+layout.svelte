@@ -14,8 +14,9 @@
 		newTodo = '';
 	};
 	const removeTodo = () => {
-		const remove = newItem.slice(newItem, -1, 1);
-		console.log(remove);
+		const remove = todos.splice(index, 1);
+		todos = todos.filter((todo) => todo !== remove);
+		console.log(todos);
 	};
 </script>
 
