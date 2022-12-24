@@ -41,6 +41,6 @@
 
 <ul>
 	{#each todos as todo}
-		<li class="text-2xl text-white">{todo}</li>
+		<div>{todo}</div>
 	{/each}
 </ul>
