@@ -13,11 +13,6 @@
 		todos = [...todos, { newItem: newTodo }];
 		newTodo = '';
 	};
-	const removeTodo = () => {
-		const remove = todos.splice(index, 1);
-		todos = todos.filter((todo) => todo !== remove);
-		console.log(todos);
-	};
 </script>
 
 <div class="flex justify-center text-2xl font-bold mt-4">SvelteTodo</div>
@@ -44,7 +39,7 @@
 </div>
 
 <ul>
-	{#each todos as todo}
-		<div class="text-center mt-10 text-lg" onclick={() => removeTodo()}>{todo.newItem}</div>
+	{#each todos as todo, index}
+		<div class="text-center mt-10 text-lg">{todo.newItem}</div>
 	{/each}
 </ul>
