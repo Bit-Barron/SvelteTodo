@@ -7,12 +7,16 @@
 	/**
 	 * @type {any[]}
 	 */
-	let todos = [{text: newTodo}];
+	let todos = [];
 
 	const addTodo = () => {
-		todos = [...todos ,{newItem: newTodo}]
+		todos = [...todos, { newItem: newTodo }];
+		newTodo = '';
 	};
-	console.log(newTodo);
+	const removeTodo = () => {
+		const remove = newItem.slice(newItem, -1, 1);
+		console.log(remove);
+	};
 </script>
 
 <div class="flex justify-center text-2xl font-bold mt-4">SvelteTodo</div>
@@ -39,7 +43,7 @@
 </div>
 
 <ul>
-	{#each todos as todo, index}
-		<div class="text-center mt-10 text-lg">{todo.index}</div>
+	{#each todos as todo}
+		<div class="text-center mt-10 text-lg" onclick={() => removeTodo()}>{todo.newItem}</div>
 	{/each}
 </ul>
